@@ -12,139 +12,119 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <title>GitHub Fetch</title>
+    
     <style>
-        body{
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        /* .center-div{
-            height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            flex-direction: column;
-            text-align: left;
-        } */
 
-        /* label color */
-        .input-field label {
-            color: #000;
+        div.row>div.input-field.label-color-alternate>input+label.active {
+            color: #212121;
+            ;
         }
 
-        /* label focus color */
-        .input-field input[type=text]:focus+label {
-            color: #000;
+        input:not([type]),
+        input[type=text]:not(.browser-default):focus:not([readonly]) {
+            border-bottom: 1px solid #212121;
+            box-shadow: none;
         }
 
-        /* label underline focus color */
-        .input-field input[type=text]:focus {
-            border-bottom: 1px solid #000;
-            box-shadow: 0 1px 0 0 #000;
-        }
-
-        /* valid color */
-        .input-field input[type=text].valid {
-            border-bottom: 1px solid #000;
-            box-shadow: 0 1px 0 0 #000;
-        }
-
-        /* invalid color */
-        .input-field input[type=text].invalid {
-            border-bottom: 1px solid #000;
-            box-shadow: 0 1px 0 0 #000;
-        }
-
-        /* icon prefix focus color */
-        .input-field .prefix.active {
-            color: #000;
-        }
-        a{
+        a {
             font-weight: 600;
+        }
+        .bold{
+            font-weight: 500;
+            font-size: 1.4rem;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- navbar -->
     <nav>
         <div class="nav-wrapper grey darken-4">
-          <a href="#" class="brand-logo center">GITHUB FETCH</a>
+            <a href="#" class="brand-logo center">GITHUB FETCH</a>
         </div>
-      </nav>
+    </nav>
+    <!-- search -->
     </div>
     <div class="container">
-        
         <h4 class="grey-text text-darken-3 text-bold">Search GitHub User</h4>
         <h6 class="grey-text text-darken-2">Enter a username to check out a profile and repos from GitHub</h6>
     </div>
-    </nav>
-    <div class="center">
+    <!-- display profile, repos, followers -->
         <div class="container">
             <div class="row">
                 <form action="" class="col s12">
                     <div class="row">
-                        <div class="input-field col l5">
+                        <div class="input-field col l label-color-alternate">
                             <input id="username" type="text" class="validate">
                             <label for="username">GitHub Username</label>
                         </div>
 
-                        <div class="input-field col s6 l2">
-                            <button class="btn waves-effect waves-light right grey darken-4" type="submit"
-                                name="action">Search User
-                            </button>
+                        <div class="input-field col s6 l2 "> 
+                            <button id="searchBtn" class="btn waves-effect waves-light right grey darken-4" type="submit">Search User</button>
+                            
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        
+    <!-- Profile -->
         <div class="container">
             <div class="row">
                 <div class="col s12 l4">
                     <div class="card-panel">
-                        <div class="card-image">
-                            <img src="img.jpg" class="responsive-img circle">
-                            <span class="card-title">Login Name</span>
-                            <p class="">Username</p>
-                            <p>bio </p>
-                            <p>country</p>
+                        <div class="card-image center">
+                            <img id="avatar" src="logotipo-do-github.png" class="responsive-img circle" style="max-width: 200px;">
+                            <p id="name" class="bold"></p>
+                            <p id="login"></p>
+                            <p id="bio"></p>
+                            <p id="date-created"></p>
                             <div class="card-action">
-                                <a href="#">View Profile</a>
+                                <a id="github_profile" href="">View Profile</a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-
-
-                
-                    <div class="col s12 l4">
-                        <div class="card-panel">
-                            <div class="card-content">
-                                <h6>Latest Repos <span class="new badge red">4</span></h6>
+                <!-- Repos -->
+                <div class="col s12 l4">
+                    <div class="card-panel">
+                        <div class="card-content">
+                            <h6>Latest Repos <span id="repos-nbr" class="new badge red">0</span></h6>
+                            <div id="repos">
                                 <p>I am a very simple card.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 l4">
-                        <div class="card-panel">
-                            <div class="card-content">
-                                <h6>Followers<span class="new badge red">4</span></h6>
+                </div>
+                <!-- Followers -->
+                <div class="col s12 l4">
+                    <div class="card-panel">
+                        <div class="card-content">
+                            <h6>Followers<span id="followers-nbr" class="new badge red">4</span></h6>
+                            <div id="followers">
                                 <p>I am a very simple card.</p>
                             </div>
                         </div>
                     </div>
-                
+                </div>
+
             </div>
         </div>
-    </div>
-    </div>
-    </div>
+    
+    <script src="app.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
     <script>
         $(document).ready(function () {
             M.updateTextFields();
         });
     </script>
+    
 </body>
 
 </html>
