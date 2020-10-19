@@ -12,7 +12,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <title>GitHub Fetch</title>
-    
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,9 +32,18 @@
         a {
             font-weight: 600;
         }
-        .bold{
+
+        .bold {
             font-weight: 500;
             font-size: 1.4rem;
+        }
+
+        #login {
+            font-weight: 400;
+        }
+
+        .badge{
+            font-weight: 300;
         }
     </style>
 </head>
@@ -49,81 +58,94 @@
     </nav>
     <!-- search -->
     </div>
+
     <div class="container">
-        <h4 class="grey-text text-darken-3 text-bold">Search GitHub User</h4>
-        <h6 class="grey-text text-darken-2">Enter a username to check out a profile and repos from GitHub</h6>
+        <div class="row">
+            <div class="col s12 offset-l1">
+                <h4 class="grey-text text-darken-3 text-bold">Search GitHub User</h4>
+                <h6 class="grey-text text-darken-2">Enter a username to check out a profile and repos from GitHub</h6>
+                <div class="row">
+                    <form action="" method="post" class="col s12">
+                        <div class="row">
+                            <div class="input-field col l4 label-color-alternate">
+                                <input id="username" type="text" class="validate">
+                                <label for="username">GitHub Username</label>
+                            </div>
+
+                            <div class="input-field col s6 l2">
+                                <button id="searchBtn" class="btn waves-effect waves-light right grey darken-4"
+                                    type="submit">Search User</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-        <div class="container">
-            <div class="row">
-                <form action="" class="col s12">
-                    <div class="row">
-                        <div class="input-field col l label-color-alternate">
-                            <input id="username" type="text" class="validate">
-                            <label for="username">GitHub Username</label>
-                        </div>
-
-                        <div class="input-field col s6 l2 "> 
-                            <button id="searchBtn" class="btn waves-effect waves-light right grey darken-4" type="submit">Search User</button>
-                            
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
     <!-- Profile -->
-        <div class="container">
-            <div class="row">
-                <div class="col s12 l4">
-                    <div class="card-panel">
-                        <div class="card-image center">
-                            <img id="avatar" src="github-logo.png" class="responsive-img circle" style="max-width: 200px;">
-                            <p id="name" class="bold"></p>
-                            <p id="login"></p>
-                            <p id="bio"></p>
-                            <p id="date-created"></p>
-                            <div class="card-action">
-                                <a id="github_profile" href="">View Profile</a>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 l4 offset-l1">
+                <div class="card-panel">
+                    <div class="card-image center">
+                        <img id="avatar" src="github-logo.png" class="responsive-img circle" style="max-width: 200px;">
                     </div>
-
-                </div>
-                <!-- Repos -->
-                <div class="col s12 l4">
-                    <div class="card-panel">
-                        <div class="card-content">
-                            <h6 id="last-repos">Latest Repos</h6><span id="repos_nbr"></span>
-                            <div id="repos">
-                                <p>I am a very simple card.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Followers -->
-                <div class="col s12 l4">
-                    <div class="card-panel">
-                        <div class="card-content">
-                            <h6 id="followers-title">Followers<span id="followers-nbr"></span></h6>
-                            <ul id="followers">
-                                
-                            </ul>
-                        </div>
+                    <ul>
+                        <li id="name" class="bold"></li>
+                        <li id="login" class="grey-text"></li>
+                        <br>
+                        <li id="bio"></li>
+                        <li id="date-created"></li>
+                    </ul>
+                    <br>
+                    <div class="card-action center">
+                        <a id="github_profile" href="">View Profile</a>
                     </div>
                 </div>
 
             </div>
+            <!-- Followers -->
+            <div class="col s12 l6">
+                <div class="card-panel">
+                    <div class="card-title">
+                        <h5 id="followers-title">Followers<span id="followers-nbr"></span></h5>
+                    </div>
+                    <br>
+                    <div class="card-content">
+                        <ul id="followers" class="collection">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Repos -->
+            <div class="col s12 l10 offset-l1">
+                <div class="card-panel">
+                    <div class="card-title">
+                        <h5 id="last-repos">Latest Repos</h5><span id="repos_nbr"></span>
+                    </div>
+                    <br>
+                    <div class="card-content">
+                        <ul class="collection" id="repos">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+
         </div>
-    
+    </div>
+
     <script src="app.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    
+
     <script>
         $(document).ready(function () {
             M.updateTextFields();
         });
     </script>
-    
+
 </body>
 
 </html>
